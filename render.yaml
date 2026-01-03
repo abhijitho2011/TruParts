@@ -1,7 +1,7 @@
 services:
   - type: web
     name: truparts-backend
-    env: node
+    runtime: node
     plan: free
     buildCommand: cd backend && npm install && npm run build
     startCommand: cd backend && npm run start:prod
@@ -12,12 +12,11 @@ services:
         sync: false
     autoDeploy: false
 
-  - type: static
+  - type: static_site
     name: truparts-frontend
-    env: static
     buildCommand: cd frontend && flutter build web --release
     staticPublishPath: frontend/build/web
     routes:
       - type: rewrite
-        source: "/*"
+        source: /*
         destination: /index.html

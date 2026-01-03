@@ -3,9 +3,11 @@ import 'package:http/http.dart' as http;
 import '../models/product.dart';
 
 class ApiService {
-  // Accessing localhost from Android emulator requires 10.0.2.2, but for Web it is localhost.
-  // Render URL will be used in production.
-  static const String baseUrl = 'http://localhost:3000';
+  // Use environment variable for production, fallback to localhost for dev
+  static const String baseUrl = String.fromEnvironment(
+    'API_URL',
+    defaultValue: 'http://localhost:3000',
+  );
 
   Future<List<Product>> getProducts(String query) async {
     final response = await http.get(
