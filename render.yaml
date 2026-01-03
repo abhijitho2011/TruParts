@@ -12,9 +12,9 @@ services:
         sync: false
     autoDeploy: false
 
-staticSites:
-  - name: truparts-frontend
-    buildCommand: cd frontend && flutter build web --release
+  - type: static_site
+    name: truparts-frontend
+    buildCommand: cd frontend && flutter build web --release --dart-define=API_URL=$API_URL
     staticPublishPath: frontend/build/web
     routes:
       - type: rewrite
