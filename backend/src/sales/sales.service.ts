@@ -92,7 +92,6 @@ export class SalesService {
                     // Let's stick to: Credit = Money In, Debit = Money Out transaction type? 
                     // Or from Party perspective: Debit = They owe us. Credit = They paid us.
                     // Use 'credit' for Payment Received.
-                    type: 'credit',
                     paymentMethod: dto.paymentMethod,
                     description: `Payment for Invoice #${invoice.invoiceNumber}`,
                 });
