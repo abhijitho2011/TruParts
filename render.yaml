@@ -3,7 +3,7 @@ services:
     name: truparts-backend
     runtime: node
     plan: free
-    buildCommand: cd backend && rm -rf node_modules package-lock.json && npm install --production=false && ls -R node_modules/@nestjs && npm run build
+    buildCommand: cd backend && npm ci --production=false && npm run build
     startCommand: cd backend && npm run start:prod
     envVars:
       - key: DATABASE_URL
