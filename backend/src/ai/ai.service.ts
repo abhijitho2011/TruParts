@@ -20,15 +20,15 @@ export class AiService {
         const products = await this.inventoryService.findAll(entities.partName);
 
         // 3. Filter by Make/Model if detected
-        const filtered = products.filter(p => {
+        const filtered = products.filter((p: any) => {
             let match = true;
-            if (entities.make && p.make) {
+            if (entities.make && (p as any).make) {
                 const searchMake = entities.make as string;
-                match = match && p.make.toLowerCase().includes(searchMake.toLowerCase());
+                match = match && ((p as any).make as string).toLowerCase().includes(searchMake.toLowerCase());
             }
-            if (entities.model && p.model) {
+            if (entities.model && (p as any).model) {
                 const searchModel = entities.model as string;
-                match = match && p.model.toLowerCase().includes(searchModel.toLowerCase());
+                match = match && ((p as any).model as string).toLowerCase().includes(searchModel.toLowerCase());
             }
             return match;
         });
