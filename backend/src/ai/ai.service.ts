@@ -22,8 +22,14 @@ export class AiService {
         // 3. Filter by Make/Model if detected
         const filtered = products.filter(p => {
             let match = true;
-            if (entities.make && p.make) match = match && p.make.toLowerCase().includes(entities.make!.toLowerCase());
-            if (entities.model && p.model) match = match && p.model.toLowerCase().includes(entities.model!.toLowerCase());
+            if (entities.make && p.make) {
+                const searchMake = entities.make as string;
+                match = match && p.make.toLowerCase().includes(searchMake.toLowerCase());
+            }
+            if (entities.model && p.model) {
+                const searchModel = entities.model as string;
+                match = match && p.model.toLowerCase().includes(searchModel.toLowerCase());
+            }
             return match;
         });
 
